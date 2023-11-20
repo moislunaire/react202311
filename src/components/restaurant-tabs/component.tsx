@@ -1,7 +1,7 @@
 import { TRestaurant } from '../../types';
-import { NavigationButton } from '../navigation-button/component';
+import { Tab } from '../tab/component';
 
-export const Navigation = ({
+export const RestaurantTabs = ({
   restaurantNames,
   onRestaurantSelect,
 }: {
@@ -11,7 +11,7 @@ export const Navigation = ({
   return (
     <div>
       {restaurantNames.map((restaurantName) => (
-        <NavigationButton
+        <Tab
           key={restaurantName}
           title={restaurantName}
           onClick={() => onRestaurantSelect(restaurantName)}

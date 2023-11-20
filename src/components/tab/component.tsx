@@ -1,6 +1,6 @@
 import { TRestaurant } from '../../types';
 
-export const NavigationButton = ({
+export const Tab = ({
   title,
   onClick,
 }: {

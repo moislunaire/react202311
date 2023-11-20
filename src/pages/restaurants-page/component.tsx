@@ -1,4 +1,4 @@
-import { Navigation } from '../../components/navigation/component';
+import { RestaurantTabs } from '../../components/restaurant-tabs/component';
 import { Restaurants } from '../../components/restaurants/component';
 import { TRestaurant } from '../../types';
 
@@ -13,7 +13,7 @@ export const RestaurantsPage = ({
 
   return (
     <div>
-      <Navigation
+      <RestaurantTabs
         restaurantNames={restaurantNames}
         onRestaurantSelect={(restaurantName: TRestaurant['name']) =>
           console.log(restaurantName)

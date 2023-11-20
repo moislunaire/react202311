@@ -1,6 +1,7 @@
 import { TRewiew } from '../../types';
+import { Review } from '../review/component';
 
-export const RestaurantReviews = ({
+export const Reviews = ({
   restaurantReviews,
 }: {
   restaurantReviews: TRewiew[];
@@ -9,8 +10,10 @@ export const RestaurantReviews = ({
     <div>
       <h3>Отзывы:</h3>
       <ul>
-        {restaurantReviews.map(({ id, text }) => (
-          <li key={id}>{text}</li>
+        {restaurantReviews.map((review) => (
+          <li key={review.id}>
+            <Review review={review} />
+          </li>
         ))}
       </ul>
     </div>

@@ -1,13 +1,13 @@
 import { TRestaurant } from '../../types';
-import { RestaurantMenu } from '../restaurantMenu/component';
-import { RestaurantReviews } from '../restaurantReviews/component';
+import { Menu } from '../menu/component';
+import { Reviews } from '../reviews/component';
 
 export const Restaurant = ({ restaurant }: { restaurant: TRestaurant }) => {
   return (
     <div>
       <h2>Ресторан: {restaurant.name}</h2>
-      <RestaurantMenu restaurantMenus={restaurant.menu} />
-      <RestaurantReviews restaurantReviews={restaurant.reviews} />
+      <Menu dishes={restaurant.menu} />
+      <Reviews restaurantReviews={restaurant.reviews} />
     </div>
   );
 };
