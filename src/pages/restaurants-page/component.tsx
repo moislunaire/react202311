@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { RestaurantTabs } from '../../components/restaurant-tabs/component';
-import { Restaurants } from '../../components/restaurants/component';
 import { TRestaurant } from '../../types';
+import { Restaurant } from '../../components/restaurant/component';
 
 export const RestaurantsPage = ({
   restaurants,
@@ -10,16 +11,21 @@ export const RestaurantsPage = ({
   const restaurantNames = Array.from(
     new Set(restaurants.map(({ name }) => name))
   );
+  const [selectedRestaurantName, setSelectedRestaurantName] = useState<
+    TRestaurant['name'] | null
+  >(null);
+
+  const selectedRestaurant = restaurants.find(
+    ({ name }) => name === selectedRestaurantName
+  );
 
   return (
     <div>
       <RestaurantTabs
         restaurantNames={restaurantNames}
-        onRestaurantSelect={(restaurantName: TRestaurant['name']) =>
-          console.log(restaurantName)
-        }
+        onRestaurantSelect={setSelectedRestaurantName}
       />
-      <Restaurants restaurants={restaurants} />
+      {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
     </div>
   );
 };
