@@ -1,3 +1,5 @@
+import { actionNames } from './constants/review-form';
+
 export type TMenu = {
   id: string;
   name: string;
@@ -18,3 +20,19 @@ export type TRestaurant = {
   menu: TMenu[];
   reviews: TRewiew[];
 };
+
+export type TFormValue = {
+  name: string;
+  text: string;
+  rating: number;
+};
+
+export type TReviewFormAction =
+  | {
+      type: (typeof actionNames)['setName'] | (typeof actionNames)['setText'];
+      payload: string;
+    }
+  | {
+      type: (typeof actionNames)['setRating'];
+      payload: number;
+    };

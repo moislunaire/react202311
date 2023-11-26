@@ -1,5 +1,4 @@
 import { TMenu } from '../../types';
-import { Counter } from '../counter/component';
 import { Dish } from '../dish/component';
 
 export const Menu = ({ dishes }: { dishes: TMenu[] }) => {
@@ -9,7 +8,7 @@ export const Menu = ({ dishes }: { dishes: TMenu[] }) => {
       <ul>
         {dishes.map((dish) => (
           <li key={dish.id}>
-            <Counter /> <Dish dish={dish} />
+            <Dish dish={dish} />
           </li>
         ))}
       </ul>
