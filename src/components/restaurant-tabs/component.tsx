@@ -1,5 +1,6 @@
 import { TRestaurant } from '../../types';
 import { Tab } from '../tab/component';
+import styles from './styles.module.css';
 
 export const RestaurantTabs = ({
   restaurantNames,
@@ -9,7 +10,7 @@ export const RestaurantTabs = ({
   onRestaurantSelect: (restaurantName: TRestaurant['name']) => void;
 }) => {
   return (
-    <div>
+    <div className={styles.restaurantTabs}>
       {restaurantNames.map((restaurantName) => (
         <Tab
           key={restaurantName}

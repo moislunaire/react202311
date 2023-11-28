@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useCount = ({
   max = 5,
@@ -12,11 +12,14 @@ export const useCount = ({
   defaultValue?: number;
 }) => {
   const [count, setCount] = useState<number>(defaultValue);
-  const decrement = () =>
-    setCount((prevCount) => (prevCount > min ? prevCount - step : min));
-  const increment = () =>
-    setCount((prevCount) => (prevCount < max ? prevCount + step : max));
-
+  const decrement = useCallback(
+    () => setCount((prevCount) => (prevCount > min ? prevCount - step : min)),
+    []
+  );
+  const increment = useCallback(
+    () => setCount((prevCount) => (prevCount < max ? prevCount + step : max)),
+    []
+  );
   useEffect(() => {
     setCount(defaultValue);
   }, [defaultValue]);

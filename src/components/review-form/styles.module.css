@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input {
+  display: block;
+  width: 50%;
+  height: 24px;
+}
+
+.textarea {
+  display: block;
+  width: 50%;
+  height: 48px;
+}
+
+.formButton {
+  width: 80px;
+  height: 24px;
+}

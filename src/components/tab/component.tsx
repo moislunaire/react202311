@@ -1,4 +1,5 @@
 import { TRestaurant } from '../../types';
+import styles from './styles.module.css';
 
 export const Tab = ({
   title,
@@ -7,5 +8,9 @@ export const Tab = ({
   title: TRestaurant['name'];
   onClick: () => void;
 }) => {
-  return <button onClick={onClick}>{title}</button>;
+  return (
+    <button className={styles.tab} onClick={onClick}>
+      {title}
+    </button>
+  );
 };

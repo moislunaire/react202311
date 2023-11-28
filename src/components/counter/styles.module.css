@@ -1,0 +1,5 @@
+.counter {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}

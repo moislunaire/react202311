@@ -9,6 +9,7 @@ import { TFormValue, TRestaurant, TReviewFormAction } from '../../types';
 import { DEFAULT_FORM_VALUE, actionNames } from '../../constants/review-form';
 import { Counter } from '../counter/component';
 import { useCount } from '../../hooks/useCount';
+import styles from './styles.module.css';
 
 const reducer: Reducer<TFormValue, TReviewFormAction> = (
   state,
@@ -62,9 +63,10 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
   }, [id]);
 
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        <label>
+    <div>
+      <h3>Написать отзыв:</h3>
+      <form onSubmit={onSubmit} className={styles.form}>
+        <label className={styles.formElement}>
           Имя
           <input
             name="name"
@@ -72,10 +74,9 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
               dispatch({ type: actionNames.setName, payload: e.target.value })
             }
             value={formValue.name}
+            className={styles.input}
           />
         </label>
-      </div>
-      <div>
         <label>
           Текст отзыва
           <textarea
@@ -84,16 +85,25 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
               dispatch({ type: actionNames.setText, payload: e.target.value })
             }
             value={formValue.text}
+            className={styles.textarea}
           />
         </label>
-      </div>
-      <div>
-        <label>
-          Рейтинг
-          <Counter count={count} increment={increment} decrement={decrement} />
-        </label>
-      </div>
-      <button type="submit">ОК</button>
-    </form>
+        <div>
+          <label>
+            Рейтинг
+            <Counter
+              count={count}
+              increment={increment}
+              decrement={decrement}
+            />
+          </label>
+        </div>
+        <div className={styles.formButton}>
+          <button type="submit" className={styles.formButtom}>
+            ОК
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };

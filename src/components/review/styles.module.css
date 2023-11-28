@@ -1,0 +1,8 @@
+.review {
+  display: flex;
+  padding: 16px 0px;
+  align-items: center;
+  gap: 15px;
+  align-self: stretch;
+  border-bottom: 1px solid #dad9d9;
+}
