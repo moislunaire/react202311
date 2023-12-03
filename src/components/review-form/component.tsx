@@ -4,11 +4,11 @@ import {
   SyntheticEvent,
   useEffect,
   useReducer,
+  useState,
 } from 'react';
 import { TFormValue, TRestaurant, TReviewFormAction } from '../../types';
 import { DEFAULT_FORM_VALUE, actionNames } from '../../constants/review-form';
 import { Counter } from '../counter/component';
-import { useCount } from '../../hooks/useCount';
 
 const reducer: Reducer<TFormValue, TReviewFormAction> = (
   state,
@@ -35,12 +35,7 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
   const [formValue, dispatch] = useReducer<
     Reducer<TFormValue, TReviewFormAction>
   >(reducer, DEFAULT_FORM_VALUE);
-
-  const { count, increment, decrement } = useCount({
-    min: 1,
-    step: 0.5,
-    defaultValue: formValue.rating,
-  });
+  const [count, setCount] = useState<number>(1);
 
   const clearForm = () => {
     dispatch({ type: actionNames.setName, payload: '' });
@@ -52,10 +47,6 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
     console.log(formValue);
     clearForm();
   };
-
-  useEffect(() => {
-    dispatch({ type: actionNames.setRating, payload: count });
-  }, [count]);
 
   useEffect(() => {
     clearForm();
@@ -90,7 +81,22 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
       <div>
         <label>
           Рейтинг
-          <Counter count={count} increment={increment} decrement={decrement} />
+          <Counter
+            count={formValue.rating}
+            increment={() =>
+              dispatch({
+                type: actionNames.setRating,
+                payload: formValue.rating + 0.5,
+              })
+            }
+            decrement={() =>
+              dispatch({
+                type: actionNames.setRating,
+                payload: formValue.rating - 0.5,
+              })
+            }
+            min={1}
+          />
         </label>
       </div>
       <button type="submit">ОК</button>
