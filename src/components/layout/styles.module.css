@@ -1,0 +1,22 @@
+.header {
+  background: #2e2e2e;
+}
+
+.footer {
+  background: #2e2e2e;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.button {
+  background: #2e2e2e;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.button:hover {
+  background: #686767;
+}

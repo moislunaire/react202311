@@ -1,5 +1,7 @@
 import classnames from 'classnames';
 import styles from './styles.module.css';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/theme-context';
 
 export const Counter = ({
   count,
@@ -12,13 +14,15 @@ export const Counter = ({
   decrement: () => void;
   className?: string;
 }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <span className={classnames(className, styles.counter)}>
-      <button onClick={decrement} type="button">
+      <button onClick={decrement} type="button" className={styles[theme]}>
         -
       </button>{' '}
       {count}{' '}
-      <button onClick={increment} type="button">
+      <button onClick={increment} type="button" className={styles[theme]}>
         +
       </button>
     </span>

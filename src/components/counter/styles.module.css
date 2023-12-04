@@ -2,3 +2,13 @@
   display: flex;
   gap: 8px;
 }
+
+.dark {
+  background: #2e2e2e;
+  color: #fff;
+}
+
+.light {
+  background: #bbbaba;
+  color: #252424;
+}
