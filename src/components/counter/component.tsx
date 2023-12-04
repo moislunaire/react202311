@@ -1,11 +1,25 @@
-import { useCount } from '../../hooks/useCount';
-
-export const Counter = () => {
-  const { count, increment, decrement } = useCount({});
+export const Counter = ({
+  count,
+  increment,
+  decrement,
+  max = 5,
+  min = 0,
+}: {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+  max?: number;
+  min?: number;
+}) => {
   return (
     <span>
-      <button onClick={decrement}>-</button> {count}{' '}
-      <button onClick={increment}>+</button>
+      <button onClick={decrement} type="button" disabled={count <= min}>
+        -
+      </button>{' '}
+      {count}{' '}
+      <button onClick={increment} type="button" disabled={count >= max}>
+        +
+      </button>
     </span>
   );
 };
