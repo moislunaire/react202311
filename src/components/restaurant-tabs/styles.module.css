@@ -1,0 +1,9 @@
+.restaurantTabs {
+  display: flex;
+  padding: 8px 160px;
+  justify-content: left;
+  align-items: center;
+  align-content: center;
+  row-gap: 16px;
+  background: #2e2e2e;
+}
