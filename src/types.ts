@@ -1,3 +1,9 @@
+import {
+  normalizedDishes,
+  normalizedRestaurants,
+  normalizedReviews,
+  normalizedUsers,
+} from './constants/normalized-mock';
 import { actionNames } from './constants/review-form';
 
 export type TMenu = {
@@ -38,3 +44,8 @@ export type TReviewFormAction =
     };
 
 export type TTheme = 'dark' | 'light';
+
+export type TNormalizedRestaurant = (typeof normalizedRestaurants)[0];
+export type TNormalizedDish = (typeof normalizedDishes)[0];
+export type TNormalizedReview = (typeof normalizedReviews)[0];
+export type TNormalizedUser = (typeof normalizedUsers)[0];

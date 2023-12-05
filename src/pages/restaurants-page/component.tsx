@@ -1,33 +1,28 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { RestaurantTabs } from '../../components/restaurant-tabs/component';
-import { TRestaurant } from '../../types';
+import { TNormalizedRestaurant } from '../../types';
 import { Restaurant } from '../../components/restaurant/component';
 import { Layout } from '../../components/layout/component';
+import { selectRestaurantIds } from '../../store/features/entities/restaurant/selectors';
 
-export const RestaurantsPage = ({
-  restaurants,
-}: {
-  restaurants: TRestaurant[];
-}) => {
-  const restaurantNames = Array.from(
-    new Set(restaurants.map(({ name }) => name))
-  );
-  const [selectedRestaurantName, setSelectedRestaurantName] = useState<
-    TRestaurant['name'] | null
+export const RestaurantsPage = () => {
+  const restaurantIds = useSelector(selectRestaurantIds);
+
+  const [selectedRestaurantId, setSelectedRestaurantId] = useState<
+    TNormalizedRestaurant['id'] | null
   >(null);
-
-  const selectedRestaurant = restaurants.find(
-    ({ name }) => name === selectedRestaurantName
-  );
 
   return (
     <Layout>
       <>
         <RestaurantTabs
-          restaurantNames={restaurantNames}
-          onRestaurantSelect={setSelectedRestaurantName}
+          restaurantIds={restaurantIds}
+          onRestaurantSelect={setSelectedRestaurantId}
         />
-        {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+        {selectedRestaurantId && (
+          <Restaurant restaurantId={selectedRestaurantId} />
+        )}
       </>
     </Layout>
   );

@@ -1,21 +1,20 @@
-import { TRestaurant } from '../../types';
 import { Tab } from '../tab/component';
 import styles from './styles.module.css';
 
 export const RestaurantTabs = ({
-  restaurantNames,
+  restaurantIds,
   onRestaurantSelect,
 }: {
-  restaurantNames: TRestaurant['name'][];
-  onRestaurantSelect: (restaurantName: TRestaurant['name']) => void;
+  restaurantIds: string[];
+  onRestaurantSelect: (restaurantId: string) => void;
 }) => {
   return (
     <div className={styles.restaurantTabs}>
-      {restaurantNames.map((restaurantName) => (
+      {restaurantIds.map((restaurantId) => (
         <Tab
-          key={restaurantName}
-          title={restaurantName}
-          onClick={() => onRestaurantSelect(restaurantName)}
+          key={restaurantId}
+          id={restaurantId}
+          onClick={() => onRestaurantSelect(restaurantId)}
         />
       ))}
     </div>
