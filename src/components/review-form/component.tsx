@@ -8,8 +8,8 @@ import {
 import { TFormValue, TRestaurant, TReviewFormAction } from '../../types';
 import { DEFAULT_FORM_VALUE, actionNames } from '../../constants/review-form';
 import { Counter } from '../counter/component';
-import { useCount } from '../../hooks/useCount';
 import styles from './styles.module.css';
+import { Button } from '../button/component';
 
 const reducer: Reducer<TFormValue, TReviewFormAction> = (
   state,
@@ -37,12 +37,6 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
     Reducer<TFormValue, TReviewFormAction>
   >(reducer, DEFAULT_FORM_VALUE);
 
-  const { count, increment, decrement } = useCount({
-    min: 1,
-    step: 0.5,
-    defaultValue: formValue.rating,
-  });
-
   const clearForm = () => {
     dispatch({ type: actionNames.setName, payload: '' });
   };
@@ -53,10 +47,6 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
     console.log(formValue);
     clearForm();
   };
-
-  useEffect(() => {
-    dispatch({ type: actionNames.setRating, payload: count });
-  }, [count]);
 
   useEffect(() => {
     clearForm();
@@ -88,20 +78,30 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
             className={styles.textarea}
           />
         </label>
-        <div>
-          <label>
-            Рейтинг
-            <Counter
-              count={count}
-              increment={increment}
-              decrement={decrement}
-            />
-          </label>
-        </div>
+
+        <label>
+          Рейтинг
+          <Counter
+            count={formValue.rating}
+            increment={() =>
+              dispatch({
+                type: actionNames.setRating,
+                payload: formValue.rating + 0.5,
+              })
+            }
+            decrement={() =>
+              dispatch({
+                type: actionNames.setRating,
+                payload: formValue.rating - 0.5,
+              })
+            }
+            min={1}
+          />
+        </label>
         <div className={styles.formButton}>
-          <button type="submit" className={styles.formButtom}>
+          <Button type="submit" className={styles.formButtom}>
             ОК
-          </button>
+          </Button>
         </div>
       </form>
     </div>

@@ -36,3 +36,5 @@ export type TReviewFormAction =
       type: (typeof actionNames)['setRating'];
       payload: number;
     };
+
+export type TTheme = 'dark' | 'light';

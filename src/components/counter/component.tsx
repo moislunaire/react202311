@@ -1,30 +1,31 @@
 import classnames from 'classnames';
 import styles from './styles.module.css';
-import { useContext } from 'react';
-import { ThemeContext } from '../context/theme-context';
+import { Button } from '../button/component';
 
 export const Counter = ({
   count,
+  className,
   increment,
   decrement,
-  className,
+  max = 5,
+  min = 0,
 }: {
   count: number;
   increment: () => void;
   decrement: () => void;
   className?: string;
+  max?: number;
+  min?: number;
 }) => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <span className={classnames(className, styles.counter)}>
-      <button onClick={decrement} type="button" className={styles[theme]}>
+      <Button onClick={decrement} disabled={count <= min}>
         -
-      </button>{' '}
+      </Button>{' '}
       {count}{' '}
-      <button onClick={increment} type="button" className={styles[theme]}>
+      <Button onClick={increment} disabled={count >= max}>
         +
-      </button>
+      </Button>
     </span>
   );
 };
