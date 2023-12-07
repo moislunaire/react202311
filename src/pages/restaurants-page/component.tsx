@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { RestaurantTabs } from '../../components/restaurant-tabs/component';
 import { TRestaurant } from '../../types';
 import { Restaurant } from '../../components/restaurant/component';
+import { Layout } from '../../components/layout/component';
 
 export const RestaurantsPage = ({
   restaurants,
@@ -20,12 +21,14 @@ export const RestaurantsPage = ({
   );
 
   return (
-    <div>
-      <RestaurantTabs
-        restaurantNames={restaurantNames}
-        onRestaurantSelect={setSelectedRestaurantName}
-      />
-      {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
-    </div>
+    <Layout>
+      <>
+        <RestaurantTabs
+          restaurantNames={restaurantNames}
+          onRestaurantSelect={setSelectedRestaurantName}
+        />
+        {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+      </>
+    </Layout>
   );
 };

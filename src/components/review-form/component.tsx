@@ -9,6 +9,7 @@ import { TFormValue, TRestaurant, TReviewFormAction } from '../../types';
 import { DEFAULT_FORM_VALUE, actionNames } from '../../constants/review-form';
 import { Counter } from '../counter/component';
 import styles from './styles.module.css';
+import { Button } from '../button/component';
 
 const reducer: Reducer<TFormValue, TReviewFormAction> = (
   state,
@@ -98,9 +99,9 @@ export const ReviewForm = ({ id }: { id: TRestaurant['id'] }) => {
           />
         </label>
         <div className={styles.formButton}>
-          <button type="submit" className={styles.formButtom}>
+          <Button type="submit" className={styles.formButtom}>
             ОК
-          </button>
+          </Button>
         </div>
       </form>
     </div>

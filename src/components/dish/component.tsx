@@ -8,13 +8,13 @@ export const Dish = ({ dish }: { dish: TMenu }) => {
 
   return (
     <div className={styles.dish}>
+      <span>{dish.name}</span>
       <Counter
         count={count}
         increment={() => setCount((prevCount) => prevCount + 1)}
         decrement={() => setCount((prevCount) => prevCount - 1)}
         className={styles.counterContainer}
       />
-      <span>{dish.name}</span>
     </div>
   );
 };

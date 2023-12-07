@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import styles from './styles.module.css';
+import { Button } from '../button/component';
 
 export const Counter = ({
   count,
@@ -18,13 +19,13 @@ export const Counter = ({
 }) => {
   return (
     <span className={classnames(className, styles.counter)}>
-      <button onClick={decrement} type="button" disabled={count <= min}>
+      <Button onClick={decrement} disabled={count <= min}>
         -
-      </button>{' '}
+      </Button>{' '}
       {count}{' '}
-      <button onClick={increment} type="button" disabled={count >= max}>
+      <Button onClick={increment} disabled={count >= max}>
         +
-      </button>
+      </Button>
     </span>
   );
 };
