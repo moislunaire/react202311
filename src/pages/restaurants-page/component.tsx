@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { RestaurantTabs } from '../../components/restaurant-tabs/component';
 import { TNormalizedRestaurant } from '../../types';
 import { Restaurant } from '../../components/restaurant/component';
