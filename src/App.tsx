@@ -1,7 +1,12 @@
+import { Provider } from 'react-redux';
 import { RestaurantsPage } from './pages/restaurants-page/component';
-import { TRestaurant } from './types';
 import './styles.css';
+import store from './store';
 
-export const App = ({ restaurants }: { restaurants: TRestaurant[] }) => {
-  return <RestaurantsPage restaurants={restaurants} />;
+export const App = () => {
+  return (
+    <Provider store={store}>
+      <RestaurantsPage />
+    </Provider>
+  );
 };
